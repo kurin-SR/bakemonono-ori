@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>創作キャラクター紹介サイト</title>
+    <!-- 👇 これが抜けていたため、CSSが一切読み込めていませんでした！ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===================================================
+         【1】ホーム画面（HOME）
+         =================================================== -->
+    <section id="home-section">
+        <header>
+            <h1>バケモノの檻</h1>
+            <p class="site-tagline">過去をたどり、正しい未来を切り開く。</p>
+        </header>
+
+        <!-- サイトのざっくりとした説明 -->
+        <article class="site-summary">
+            <h2>ABOUT</h2>
+            <p>
+                当サイトは、クリンが制作している創作企画「バケモノの檻」のキャラクターや世界観の設定をまとめたデータベースです。<br>
+                さまざまな過去を持つ人外と記憶喪失の一人の人間が、失われた記憶を取り戻すために協力しながら、世界の謎に迫っていく物語です。<br>
+            </p>
+        </article>
+
+        <!-- 各ページ（セクション）へ遷移するためのボタン群 -->
+        <nav class="home-navigation">
+            <button class="nav-btn" data-target="char-list-section">CHARACTER LIST (キャラ一覧)</button>
+            <button class="nav-btn" data-target="world-section">WORLD & GLOSSARY (世界観・用語)</button>
+            <button class="nav-btn" data-target="char-qa-section">CHARACTER Q&A (みんなに質問)</button>
+        </nav>
+    </section>
+
+   <!-- ===================================================
+         【2】キャラクター一覧画面（CHARACTER LIST）
+         =================================================== -->
+    <section id="char-list-section" style="display: none;">
+        <h2>CHARACTER LIST</h2>
+        <p>アイコンをクリックすると、詳細プロフィールが表示されます。</p>
+
+        <!-- メインキャラクターのグループ -->
+        <div class="character-group">
+            <h3>MAIN CHARACTERS</h3>
+            <div id="main-char-grid" class="character-grid">
+                <!-- ここにJavaScriptで自動的に顔アイコンが並びます -->
+            </div>
+        </div>
+
+        <!-- サブキャラクターのグループ -->
+        <div class="character-group">
+            <h3>SUB CHARACTERS</h3>
+            <div id="sub-char-grid" class="character-grid">
+                <!-- ここにJavaScriptで自動的に顔アイコンが並びます -->
+            </div>
+        </div>
+
+        <button class="back-to-home">HOMEに戻る</button>
+    </section>
+
+    <!-- ===================================================
+         【3】キャラクター詳細画面（CHARACTER DETAIL）
+         =================================================== -->
+    <section id="char-detail-section" style="display: none;">
+        <div class="detail-container">
+            
+            <div class="detail-slider-wrapper">
+                
+                <button id="prev-char-btn" class="slide-arrow-btn" aria-label="前のキャラクター">〈</button>
+
+                <div class="detail-main-layout">
+                    <div class="detail-visual">
+                        <div class="detail-img-container">
+                            <img id="detail-img" src="" alt="キャラクター立ち絵" onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'">
+                        </div>
+                    </div>
+
+                    <div class="detail-info">
+                        <h2 id="detail-name"></h2>
+                        <p id="detail-catchphrase" class="catchphrase"></p>
+
+                        <table class="detail-table">
+                            <tr><th>GENDER (性別)</th><td id="detail-gender"></td></tr>
+                            <tr><th>HEIGHT (身長)</th><td id="detail-height"></td></tr>
+                            <tr><th>RACE (種族)</th><td id="detail-race"></td></tr>
+                            <tr><th>PRONOUN (一人称)</th><td id="detail-personal-pronoun"></td></tr>
+                            <tr><th>LIKE (好物)</th><td id="detail-like"></td></tr>
+                            <tr><th>DISLIKE (苦手)</th><td id="detail-dislike"></td></tr>
+                            <tr><th>ABILITIES (能力)</th><td id="detail-abilities"></td></tr>
+                        </table>
+
+                        <div id="detail-bio" class="detail-bio"></div>
+
+                    </div>
+                </div>
+
+                <button id="next-char-btn" class="slide-arrow-btn" aria-label="次のキャラクター">〉</button>
+
+            </div> <div class="detail-relations">
+                <h3>FROM OTHERS (他キャラからの印象)</h3>
+                <div id="detail-relations-list" class="relations-list">
+                    </div>
+            </div>
+            
+        </div>
+
+        <button class="back-to-list">一覧に戻る</button>
+    </section>
+
+    <!-- ===================================================
+         【4】世界観・設定・用語の説明画面（WORLD & GLOSSARY）
+         =================================================== -->
+    <section id="world-section" style="display: none;">
+        <h2>WORLD & GLOSSARY</h2>
+
+        <!-- 世界観・ストーリーの解説 -->
+        <article class="world-story">
+            <h3>STORY</h3>
+            <p>見知らぬ場所で目が覚めたミツキ。そこは世界のありとあらゆるモノの記憶を管理する「記憶の檻」だった。記憶を失っていたミツキは失われた記憶を取り戻すために世界の記憶を覗いていく。
+               バケモノ、天使、アモノ。各々の思惑が交錯し、ミツキは世界の真実に迫っていくことになる。
+            </p>
+        </article>
+
+        <!-- 用語集 -->
+        <article class="glossary-container">
+            <h3>KEYWORD</h3>
+            
+            <dl class="glossary-list">
+                <dt>【天界】</dt>
+                <dd>あらゆる世界の根源。万物の運命を定め、命を巡らせ、世界を管理している。</dd>
+
+                <dt>【神】</dt>
+                <dd>高次元エネルギー体。光、海など様々なものを司る神が存在する。天界を支配しているのは光の神・創造神「カミサマ」。光の神と対になる塵の神・破壊神が存在するが行方不明。</dd>
+
+                <dt>【バケモノ】</dt>
+                <dd>人間が神々と契約し力を得た存在。彼らは輪廻から外れ、肉体が同じ状態に固定される。そのため、神に運命を定められず、不老不死で再生能力が高い。特徴的な耳を持っている。</dd>
+
+                <dt>【アモノ】</dt>
+                <dd>バケモノから生まれた存在。神と直接契約しているわけではない。そのため、バケモノの特性を引き継いでいるが、不老不死ではない。</dd>
+
+                <dt>【天使】</dt>
+                <dd>天界の住人でカミサマの使い。死んだ人間の魂が変化した存在。生前の記憶はない。バケモノと同じように、天使は不老不死で生まれた子は不老不死ではない。</dd>
+
+                <dt>【記憶の檻】</dt>
+                <dd>世界のありとあらゆるモノの記憶を管理する場所。過去の檻、現在の檻、未来の檻の3つのエリアに分かれている。ミツキはこの場所で目を覚ました。</dd>
+                
+                <dt>【楽園の大樹】</dt>
+                <dd>天界の情報機関。世界の法則や記録を管理し研究している。記憶の檻は楽園の大樹の所属。長官はスキエンティア、副長官はイクサスである。</dd>
+
+                <dt>【楽園の聖槍】</dt>
+                <dd>天界の軍事機関。世界の秩序を乱す者を討ち、天界の安全を守る。大将は天使同士の決闘で決まり、現在の大将はゲニウスである。</dd>
+
+                <dt>【楽園の主機】</dt>
+                <dd>天界の政治機関。天使たちを統率し、法により犯罪者を裁く。首相はレギーナである。</dd>
+
+                <dt>【楽園の神門】</dt>
+                <dd>天界の入り口。死んだ人間の魂を見定め、天使となるか次の人生へ転生するかを決める場所。5名ほどの少人数で運営されている。オルクスがリーダー。。</dd>
+            </dl>
+        </article>
+
+        <button class="back-to-home">HOMEに戻る</button>
+    </section>
+
+    <!-- ===================================================
+         【5】みんなに質問画面（CHARACTER Q&A）
+         =================================================== -->
+    <section id="char-qa-section" style="display: none;">
+    <div class="qa-container">
+        <h2>CHARACTER Q&A <small>- みんなに質問 -</small></h2>
+        <p class="qa-intro">みんなにいくつかの質問を投げかけてみました。</p>
+
+        <div class="qa-list">
+
+            <div class="qa-block">
+                <div class="qa-question">
+                    <span class="q-badge">Q1</span>
+                    <h3>お酒は飲める？お酒にまつわるエピソードは？</h3>
+                </div>
+                <div id="qa-alcohol-list" class="qa-answers-grid">
+                    </div>
+            </div>
+
+            <div class="qa-block">
+                <div class="qa-question">
+                    <span class="q-badge">Q2</span>
+                    <h3>普段の趣味や、ひそかな楽しみを教えて</h3>
+                </div>
+                <div id="qa-hobby-list" class="qa-answers-grid">
+                    </div>
+            </div>
+
+            <div class="qa-block">
+                <div class="qa-question">
+                    <span class="q-badge">Q3</span>
+                    <h3>好きな食べ物は？</h3>
+                </div>
+                <div id="qa-food-list" class="qa-answers-grid">
+                    </div>
+            </div>
+
+        </div> </div>
+
+        <button class="back-to-home">ホームに戻る</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
